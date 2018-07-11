@@ -12,7 +12,7 @@ class CLI
   end
 
   def categories
-    ["Business", "Entertainment", "Health", "Science", "Sports", "Technology"]
+    ["Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"]
   end
 
   def put_category_list
@@ -25,7 +25,8 @@ class CLI
   def display_categories
     puts "Select your interests out of the following"
     put_category_list
-    puts "Select one or many - type 'done' when finished."
+    puts "Enter the number corresponding to your
+    selection - type 'done' when finished."
   end
 
   def get_interests

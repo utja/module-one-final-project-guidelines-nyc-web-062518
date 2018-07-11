@@ -1,4 +1,4 @@
-jon = User.create(name: "Jon")
+# jon = User.create(name: "Jon")
 # kai = User.create(name: "Kai")
 
 business = Interest.create(name: "business")
