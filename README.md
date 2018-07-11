@@ -1,3 +1,10 @@
+#TO DO LIST
+1. Get error if user enters in incorrect category
+2. Favorite Model
+3. Rename variables/hashes/method
+
+
+
 # Module One Final Project Guidelines
 
 Congratulations, you're at the end of module one! You've worked crazy hard to get here and have learned a ton.
