@@ -1,8 +1,9 @@
 require_relative '../config/environment'
 
+
 user = User.create
 user.run_cli
-binding.pry
+# binding.pry
 # app.get_name
 
 # user = User.create(name: app.user_name)

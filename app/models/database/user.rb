@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :interests
-  has_many :articles
+  has_many :favorites
+  has_many :articles, through: :favorites
   include CLI
 
   def get_name
@@ -8,71 +8,39 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  def get_available_time
-    available_time = STDIN.gets.chomp
-    self.time = available_time.to_i
-    self.save
+  def save_new_favorite(article_id)
+    Favorite.create(article_id: article_id, user_id: self.id)
   end
 
-  def get_interests
-    selection = nil
-    possible_selections = ["1", "2", "3", "4", "5", "6", "done"]
-    # until selection == "done"
-    if possible_selections.include? selection
-      selection = STDIN.gets.chomp
-      break if selection == "done"
-      self.interests << Interest.all[selection.to_i - 1]
-    else
-      "Invalid selection, please try again."
-    end
-    # end
+  def delete_favorite(article_id)
+    favorite_to_delete = (Favorite.where(user_id: self.id, article_id: article_id))
+    favorites.destroy(favorite_to_delete)
   end
 
-  def interest_names
-    self.interests.map do |interest|
-      interest.name
-    end
-  end
+  def most_favorited_source
+    self.favorites.articles
+   "will iterate over favorites, and find the highest source count"
+   source_count = {
 
-  def get_articles
-    news = News.new("d2c37d79b5c84debb698214093e9c9da")
-    # news.get_sources(country: 'us', language: 'en')
-    articles = interest_names.map do |interest|
-        news.get_top_headlines(country: "us", language: "en", category: interest, pageSize: articles_per_interest)
-      end
-    articles.flatten[0..number_of_articles - 1]
-  end
+   }
+ end
+  #
+  #
+  #  Favorite.map do |article|
+  #    if source_count.has_key? article.
+  #      source_count[]
+  #
+  #      hash = {}
+  #        array.map do |num|
+  #          if hash.has_key? num
+  #            hash[num] += 1
+  #          else
+  #            hash[num] = 1
+  #          end
+  #        end
+  #        array
+  #
+  # end
 
-  def save_artciles
 
-  end
-
-  def number_of_articles
-    self.time / 5
-  end
-
-  def articles_per_interest
-    (number_of_articles.to_f / self.interests.length).ceil
-  end
-
-  def results
-    array_of_hashes = []
-    get_articles.each do |article|
-      hash = {
-        :title => article.title,
-        :url => article.url,
-        :source => article.name
-      }
-      array_of_hashes << hash
-    end
-    array_of_hashes
-  end
-
-  def details
-    results.each do |hash|
-      hash.each do |key, value|
-        puts value
-      end
-    end
-  end
 end

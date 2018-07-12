@@ -6,32 +6,47 @@ module CLI
     get_name
   end
 
-  def ask_time
-    puts "How much free time do you have to read on a daily basis? (in minutes)"
-    get_available_time
-  end
-
-  def categories
-    ["Business", "Entertainment", "Health", "Science", "Sports", "Technology"]
-  end
-
-  def put_category_list
-    categories.each do |category|
-      puts "#{categories.index(category)+1}) #{category}"
+  def show_articles
+    "Here are your personally curated list of articles for today:"
+    Article.all.each do |article|
+      puts "#{article.id} : #{article.title}"
     end
   end
 
-  def ask_categories
-    puts "Select your interests out of the following"
-    put_category_list
-    puts "Enter the number corresponding to your
-    selection - type 'done' when finished."
-    get_interests
+  def select_favorites
+    puts "Please select your favorites by number. Enter done when you have finished:"
+    selection = nil
+    until selection == "done"
+      selection = STDIN.gets.chomp
+      break if selection == "done"
+      self.save_new_favorite(selection.to_i)
+    end
+  end
+
+  def options
+    puts "Is there anything else you would like to do today?"
+    puts "Show me my favorites"
+    puts "Delete a favorite"
+    puts ""
+  end
+
+  def show_favorites
+    puts "If you would like to see your favorites, type yes now:"
+    selection = STDIN.gets.chomp
+    if selection == "yes"
+      puts self.favorites
+    end
+  end
+
+  def delete_favorite
+    puts "Would you like to delete a favorited article?:"
   end
 
   def run_cli
     greeting
-    ask_time
-    ask_categories
+    show_articles
+    select_favorites
+    show_favorites
   end
+
 end
