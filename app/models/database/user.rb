@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :interests
+  has_many :articles
   include CLI
 
   def get_name
@@ -15,12 +16,16 @@ class User < ActiveRecord::Base
 
   def get_interests
     selection = nil
-    until selection == "done"
-      # if selection != 1..7 || selection == "done"
+    possible_selections = ["1", "2", "3", "4", "5", "6", "done"]
+    # until selection == "done"
+    if possible_selections.include? selection
       selection = STDIN.gets.chomp
       break if selection == "done"
       self.interests << Interest.all[selection.to_i - 1]
+    else
+      "Invalid selection, please try again."
     end
+    # end
   end
 
   def interest_names
@@ -36,6 +41,10 @@ class User < ActiveRecord::Base
         news.get_top_headlines(country: "us", language: "en", category: interest, pageSize: articles_per_interest)
       end
     articles.flatten[0..number_of_articles - 1]
+  end
+
+  def save_artciles
+
   end
 
   def number_of_articles
