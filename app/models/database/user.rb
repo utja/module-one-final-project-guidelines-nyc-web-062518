@@ -17,30 +17,4 @@ class User < ActiveRecord::Base
     favorites.destroy(favorite_to_delete)
   end
 
-  def most_favorited_source
-    self.favorites.articles
-   "will iterate over favorites, and find the highest source count"
-   source_count = {
-
-   }
- end
-  #
-  #
-  #  Favorite.map do |article|
-  #    if source_count.has_key? article.
-  #      source_count[]
-  #
-  #      hash = {}
-  #        array.map do |num|
-  #          if hash.has_key? num
-  #            hash[num] += 1
-  #          else
-  #            hash[num] = 1
-  #          end
-  #        end
-  #        array
-  #
-  # end
-
-
 end

@@ -1,9 +1,9 @@
-#TO DO LIST
+<!-- #TO DO LIST
 1. Get error if user enters in incorrect category
 2. Favorite Model
-3. Rename variables/hashes/method
+3. Rename variables/hashes/method -->
 
-
+*
 
 # Module One Final Project Guidelines
 

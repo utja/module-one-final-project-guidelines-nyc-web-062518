@@ -14,12 +14,42 @@ class Favorite < ActiveRecord::Base
      hash
    end
 
-   def self.find_article_with_most_favorites
-     sort = find_count_of_article_and_favorite_count.sort_by do |k => v|
-       v
+
+      hash = {}
+       Listing.all.map do |listing|
+         hash[listing] = listing.trips.count
+       end
+       Listing.all.sort_by do |listing|
+         listing.trips.count
+       end.reverse.first
+       hash
+       hash.max_by do |k,v|
+         v
+       end
+
+   def self.sorted
+     sorted_array = find_count_of_article_and_favorite_count.sort_by do |key, value|
+       value
      end
-     sort.reverse.first
+     sorted_array.reverse.first
+     #article id, count
    end
+
+   def self.find_article_with_most_favorites
+     most_fav_article_id = sorted[0]
+     Article.where(id: most_fav_article_id).first
+   end
+
+   def self.find_source_of_article_with_most_favorites
+     find_article_with_most_favorites.source
+   end
+
+
+
+
+
+
+
  end
 
 
