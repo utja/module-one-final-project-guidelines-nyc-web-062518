@@ -1,33 +1,49 @@
 module CLI
 
   def greeting
+    puts "================================================================================================================================="
     puts "Hello and welcome to your daily dose of news"
+    puts "================================================================================================================================="
     puts "What is your name?"
     get_name
+    puts "================================================================================================================================="
+    puts "Welcome #{self.name}"
+    puts "================================================================================================================================="
+  end
+
+  def article_message
+    puts "Here are your personally curated list of articles for today:"
+    puts "================================================================================================================================="
   end
 
   def show_articles
-    "Here are your personally curated list of articles for today:"
     Article.all.each do |article|
       puts "#{article.id} : #{article.title}"
     end
+    puts "================================================================================================================================="
+  end
+
+  def select_message
+    puts "Please select your favorites by number. Enter one number at a time. Enter 'done' when you have finished:"
+    puts "================================================================================================================================="
   end
 
   def select_favorites
-    puts "Please select your favorites by number. Enter done when you have finished:"
     selection = nil
     until selection == "done"
       selection = STDIN.gets.chomp
+      puts "================================================================================================================================="
       break if selection == "done"
       self.save_new_favorite(selection.to_i)
       sleep(0.3)
-      show_articles
-      puts "Please select any more favorites by number. Enter done when you have finished:"
+      puts "#{selection} has been added to your favorites list"
+      puts "Please select any more favorites by number. Enter 'done' when you have finished:"
+      puts "================================================================================================================================="
     end
   end
 
   def last_message
-    puts "Is there anything else you would like to do today?, click the corresponding number to continue, enter done if you're done:"
+    puts "Is there anything else you would like to do today? Enter the corresponding number to continue. Enter 'done' if you're done:"
     puts "1. Show me my favorites"
     puts "2. Delete a favorite"
     puts "3. Show me today's articles again"
@@ -44,31 +60,42 @@ module CLI
       selection = STDIN.gets.chomp
       break if selection == "done"
       if selection == "1"
+        puts "================================================================================================================================="
         favorites_list
+        puts "================================================================================================================================="
         sleep(0.1)
         last_message
       elsif selection == "2"
+        puts "================================================================================================================================="
+        favorites_list
         delete_a_favorite
+        puts "================================================================================================================================="
         sleep(0.1)
         last_message
       elsif selection == "3"
+        puts "================================================================================================================================="
         show_articles
         sleep(0.1)
         last_message
       elsif selection == "4"
+        puts "================================================================================================================================="
         show_articles
+        puts "Please select the number of the article you would like to add"
         select_favorites
         sleep(0.1)
         last_message
       elsif selection == "5"
+        puts "================================================================================================================================="
         find_article_with_most_favorites
         sleep(0.1)
         last_message
       elsif selection == "6"
+        puts "================================================================================================================================="
         sources
         sleep(1)
         last_message
       elsif selection == "7"
+        puts "================================================================================================================================="
         puts "Sorry, you are not the single source of truth"
         sleep(2)
         puts "You could be, but then you wouldn't be requesting that"
@@ -98,28 +125,37 @@ module CLI
 
   def ask_if_favorite
     puts "If you would like to see your favorites, type 'yes' now. Type 'no' to continue."
+    puts "================================================================================================================================="
     selection = STDIN.gets.chomp
     if selection == "yes"
+      puts "================================================================================================================================="
       favorites_list
+      puts "================================================================================================================================="
     end
   end
 
   def ask_if_delete_favorite
-    puts "If you would like to delete an article, type 'yes' now. Type 'no' to continue."
+    puts "If you would like to remove an article from your favorites list, type 'yes' now. Type 'no' to continue."
+    puts "================================================================================================================================="
     selection = STDIN.gets.chomp
+    puts "================================================================================================================================="
     if selection == "yes"
       delete_a_favorite
-      puts "Your selected articles have been deleted."
+      puts "================================================================================================================================="
+      puts "Your selected articles have been removed from your favorites list."
+      puts "================================================================================================================================="
     end
   end
 
   def delete_a_favorite
     selection = nil
     until selection == "done"
-      puts "Enter the number of the article which you would like to delete. Type done when you are finished:"
+      puts "Enter the number of the article which you would like to remove. Type done when you are finished:"
+      puts "================================================================================================================================="
       selection = STDIN.gets.chomp
       break if selection == "done"
       self.delete_favorite(selection.to_i)
+      puts "================================================================================================================================="
       favorites_list
     end
   end
@@ -154,6 +190,8 @@ module CLI
   def run_cli
     greeting
     sleep(0.5)
+    article_message
+    select_message
     show_articles
     select_favorites
     sleep(0.5)
