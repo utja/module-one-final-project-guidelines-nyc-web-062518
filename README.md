@@ -19,7 +19,7 @@ Is there anything else you would like to do today? Enter the corresponding numbe
 5. See the most trending article today
 6. See the sources for the available articles
 7. See other users who marked some of their favorites
-Show me my favorites
+(input) Show me my favorites
 =================================================================================================================================
 
 That is not a valid input! Choose from 1-7 or enter 'done'
@@ -30,7 +30,7 @@ That is not a valid input! Choose from 1-7 or enter 'done'
 
 
 ## Contributors Guide
-Kai and Jon
+[Kai](https://github.com/kai021998) and [Jon](https://github.com/utja)
 
 
 ## License
