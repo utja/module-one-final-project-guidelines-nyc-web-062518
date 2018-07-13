@@ -1,15 +1,12 @@
 ### News Article App
 
 ## Description
-
 This small app utilizes the Google News API to pull down the 10 most relevant articles on a given day, then asks the user if they would like to favorite any of them. If a user does, the articles will be added and stored to a favorites table. The user can delete favorites, add favorites, see their favorites, the most favorited article of the day, and the sources for the available articles.
 
 ##Installation
-
 Fork and clone the repo, and then run the 'bin/run.rb' file.
 
 ##Example
-
 Enter numbers to navigate the menu.
 
 ```ruby
@@ -33,10 +30,8 @@ That is not a valid input! Choose from 1-7 or enter 'done'
 
 
 ##Contributors Guide
-
 Kai and Jon
 
 
 ##License
-
 Flatiron^tm
