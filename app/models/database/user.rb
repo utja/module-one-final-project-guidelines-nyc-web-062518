@@ -21,8 +21,7 @@ class User < ActiveRecord::Base
   def find_article_with_most_favorites
     most_fav_article_id = sorted[0]
     most = Article.where(id: most_fav_article_id).first
-    puts "1: #{most.title}
-         #{most.url}"
+    puts "1: #{most.title} \n #{most.url}"
   end
 
   def find_source_of_article_with_most_favorites

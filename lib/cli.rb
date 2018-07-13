@@ -87,11 +87,13 @@ module CLI
       elsif selection == "5"
         puts "================================================================================================================================="
         find_article_with_most_favorites
-        sleep(0.1)
+        puts "================================================================================================================================="
+        sleep(1)
         last_message
       elsif selection == "6"
         puts "================================================================================================================================="
         sources
+        puts "================================================================================================================================="
         sleep(1)
         last_message
       elsif selection == "7"
@@ -109,11 +111,16 @@ module CLI
           n -= 1
         end
         puts "Just kidding."
+        puts "================================================================================================================================="
+        sleep(1)
         last_message
       else
-        puts "that's not a valid input!"
+        puts "================================================================================================================================="
+        puts "That's not a valid input! \nChoose from 1-7 or enter 'done'"
+        puts "================================================================================================================================="
       end
     end
+    puts "================================================================================================================================="
     puts "Thank you for using our app!"
   end
 
@@ -150,7 +157,7 @@ module CLI
   def delete_a_favorite
     selection = nil
     until selection == "done"
-      puts "Enter the number of the article which you would like to remove. Type done when you are finished:"
+      puts "Enter the number of the article which you would like to remove. Type 'done' when you are finished:"
       puts "================================================================================================================================="
       selection = STDIN.gets.chomp
       break if selection == "done"
