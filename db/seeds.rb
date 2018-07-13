@@ -28,28 +28,28 @@ array_of_hashes.each do |hash|
   Article.create(hash)
 end
 
-#jon.id = 1
-# jon.save_new_favorite(2)
-# jon.save_new_favorite(3)
-# jon.save_new_favorite(4)
-# jon.save_new_favorite(8)
-# jon.save_new_favorite(5)
-#
-# #kai.id = 2
-# kai.save_new_favorite(3)
-# kai.save_new_favorite(5)
-# kai.save_new_favorite(1)
-# kai.save_new_favorite(2)
-#
-# #sean.id =3
-# sean.save_new_favorite(3)
-# sean.save_new_favorite(5)
-# sean.save_new_favorite(1)
-# sean.save_new_favorite(2)
-#
-# #tony.id = 4
-# tony.save_new_favorite(1)
-# tony.save_new_favorite(9)
-# tony.save_new_favorite(5)
-# tony.save_new_favorite(8)
-# tony.save_new_favorite(7)
+# jon.id = 1
+jon.save_new_favorite(2)
+jon.save_new_favorite(3)
+jon.save_new_favorite(4)
+jon.save_new_favorite(8)
+jon.save_new_favorite(5)
+
+#kai.id = 2
+kai.save_new_favorite(6)
+kai.save_new_favorite(5)
+kai.save_new_favorite(1)
+kai.save_new_favorite(2)
+
+#sean.id =3
+sean.save_new_favorite(3)
+sean.save_new_favorite(5)
+sean.save_new_favorite(1)
+sean.save_new_favorite(6)
+
+#tony.id = 4
+tony.save_new_favorite(1)
+tony.save_new_favorite(9)
+tony.save_new_favorite(5)
+tony.save_new_favorite(8)
+tony.save_new_favorite(7)

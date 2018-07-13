@@ -3,7 +3,7 @@
 2. Favorite Model
 3. Rename variables/hashes/method -->
 
-*
+
 
 # Module One Final Project Guidelines
 
